@@ -1,9 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-const propTypes = {};
-
-const defaultProps = {};
 
 const SelectComponent = ({label, selectId,options,onchange}) => {
   return (
@@ -12,7 +7,7 @@ const SelectComponent = ({label, selectId,options,onchange}) => {
     <div className="flex-1 flex flex-col md:flex-row">
       <div className="w-full flex-1 mx-2">
         <div className="my-2 p-1 bg-white flex border border-gray-200 rounded">
-          <select id={selectId} name={selectId} className="outline-none w-full text-gray-800" onChange={onchange}>
+          <select id={selectId} name='type' className="outline-none w-full text-gray-800" onChange={onchange}>
             <option>Product Type</option>
             {options.map((option)=>(
               <option key={option.name} value={option.value}>{option.name}</option>
@@ -23,9 +18,5 @@ const SelectComponent = ({label, selectId,options,onchange}) => {
     </div>
   </div>);
 }
-
-SelectComponent.propTypes = propTypes;
-SelectComponent.defaultProps = defaultProps;
-
 
 export default SelectComponent;
