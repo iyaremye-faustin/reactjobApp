@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';
+import Products from './components/Products';
+import NewProduct from './components/NewProduct';
+import PageNotFound from './components/errors/PageNotFound';
+const propTypes = {};
 
-function App() {
+const defaultProps = {};
+
+const App=()=>{
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Products />} />
+        <Route path="/new/product" element={<NewProduct/>}/>
+        <Route path="*" element={<PageNotFound />} />
+    </Routes>
+  </Router>
   );
 }
+
+App.propTypes = propTypes;
+App.defaultProps = defaultProps;
 
 export default App;
