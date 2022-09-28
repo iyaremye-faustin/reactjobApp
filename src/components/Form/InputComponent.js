@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const InputComponent = ({label, type,onChange,inputId}) => {
   return (
@@ -15,9 +14,5 @@ const InputComponent = ({label, type,onChange,inputId}) => {
       </div>  
   );
 }
-
-// InputComponent.propTypes = propTypes;
-// InputComponent.defaultProps = defaultProps;
-
 
 export default InputComponent;
