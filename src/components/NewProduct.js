@@ -4,19 +4,19 @@ import InputComponent from './Form/InputComponent';
 import ButtonSection from './Form/ButtonSection';
 import SelectComponent from './Form/SelectComponent';
 import { addProduct } from '../api';
-
-const propTypes = {};
-
-const defaultProps = {};
+import { useNavigate } from 'react-router-dom';
+import FailAlert from './errors/FailAlert';
 
 const NewProduct = () => {
   const [formData,setData]=useState({});
   const [productType,setType]=useState('');
+  const [error,setErrror]=useState('');
+  const navigate=useNavigate();
   const inputHandle=(e)=>{
     const { name } = e.target;
     const { value } = e.target;
     setData((values) => ({ ...values, [name]: value }));
-    if(name==='productType'){
+    if(name==='type'){
       setType(value);
     }
   }
@@ -36,8 +36,13 @@ const NewProduct = () => {
     }
   ];
   const formHandler=async(e)=>{
+    setErrror('');
     e.preventDefault();
     const sendResult=await addProduct(formData);
+    if(sendResult.success){
+      return navigate('/');
+    }
+    setErrror(sendResult.message);
   }
 
   return (
@@ -46,6 +51,7 @@ const NewProduct = () => {
         <div className="p-5 px-4 py-5 bg-white space-y-6 sm:p-6">
           <div className="mt-2">
             <ButtonSection buttonName={'save'} type={'submit'}/>
+            {error.length>0 && <FailAlert message={error}/>}
             <InputComponent label={'SKU'} type={'text'} onChange={inputHandle} inputId={'sku'}/>
             <InputComponent label={'Name'} type={'text'} onChange={inputHandle} inputId={'name'}/>
             <InputComponent label={'Price($)'} type={'text'} onChange={inputHandle} inputId={'price'}/>
@@ -69,9 +75,6 @@ const NewProduct = () => {
   </div>
   );
 }
-
-NewProduct.propTypes = propTypes;
-NewProduct.defaultProps = defaultProps;
 
 
 export default NewProduct;
