@@ -29,7 +29,7 @@ const Products = () => {
       setRemove((values) => ({ ...values, [value]: name }));
     }else{
       const property=e.target.name;
-      const newRemoveIds=Object.fromEntries(Object.entries(removeIds).filter(([key]) => key!=property));
+      const newRemoveIds=Object.fromEntries(Object.entries(removeIds).filter(([key]) => key!==property));
       setRemove(newRemoveIds);
     }
   }

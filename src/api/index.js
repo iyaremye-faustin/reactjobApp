@@ -1,7 +1,7 @@
-import {api} from './constants';
+import {api,SERVER_URL} from './constants';
 const addProduct=async(product)=>{
   try {
-    const res = await api.post('/index.php',JSON.stringify(product));
+    const res = await api.post('index.php',JSON.stringify(product));
     if(res.status===201){
       return {success:true,message:res.data.message};
     }
@@ -26,7 +26,7 @@ const getProducts=async()=>{
 }
 const deleteProducts=async(products)=>{
   try {
-    const res=await fetch(`http://127.0.0.1/scanweb/delete.php`,{
+    const res=await fetch(`${SERVER_URL}delete.php`,{
       method:'DELETE',
       headers: {
         'Accept': 'application/json',
