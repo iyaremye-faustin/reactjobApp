@@ -1,7 +1,9 @@
 import axios from "axios";
-const SERVER_URL="http://127.0.0.1/scanweb/";
+
+const SERVER_URL="http://myhost.sihs.education/";
 const api = axios.create({
   baseURL: `${SERVER_URL}`,
   headers: {},
 });
-export {api}
+
+export {api,SERVER_URL}
