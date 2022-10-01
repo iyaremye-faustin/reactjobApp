@@ -24,15 +24,18 @@ const NewProduct = () => {
   const selectOptions=[
     {
       name:'DVD',
-      value:'DVD'
+      value:'DVD',
+      id:'DVD',
     },
     {
       name:'Book',
-      value:'Book'
+      value:'Book',
+      id:'Book'
     },
     {
       name:'Furniture',
-      value:'Furniture'
+      value:'Furniture',
+      id:'Furniture'
     }
   ];
   const formHandler=async(e)=>{

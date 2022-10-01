@@ -53,10 +53,10 @@ const Products = () => {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {products.length>0 && products.map((product)=>(
         <div className="w-full bg-white rounded-lg p-12 flex flex-row" key={product.id}>
-          <div className="mr-20">
-            <CheckBox id={product.id} value={product.id} handleChange={handleCheckBox} />
+          <div className="mr-5">
+            <CheckBox id={product.id} value={product.id} handleChange={handleCheckBox}/>
           </div>
-          <div>
+          <div className="ml-5">
             <div className="mb-8">
               <p className="text-xl text-gray-700 font-bold mb-2">{product.type}</p>
             </div>
@@ -64,6 +64,12 @@ const Products = () => {
               <p className="text-xl text-gray-700 font-normal mb-2">{product.name}</p>
               <p className="text-base text-gray-400 font-normal">{product.sku}</p>
               <p className="text-base text-gray-400 font-normal">{product.price +'$'}</p>
+              {product.size >0 && 
+              <p className="text-base text-gray-400 font-normal">Size: {product.size +'MB'}</p>}
+              {product.weight > 0 && 
+              <p className="text-base text-gray-400 font-normal">Weight: {product.weight +'KG'}</p>}
+              {product.height >0 && 
+              <p className="text-base text-gray-400 font-normal text-sm">Dimension: {product.height +'x' +product.width+'x'+product.length}</p>}
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ const SelectComponent = ({label, selectId,options,onchange}) => {
           <select id={selectId} name='type' className="outline-none w-full text-gray-800" onChange={onchange}>
             <option>Product Type</option>
             {options.map((option)=>(
-              <option key={option.name} value={option.value}>{option.name}</option>
+              <option key={option.name} value={option.value} id={option.id}>{option.name}</option>
             ))}
           </select> 
         </div>
